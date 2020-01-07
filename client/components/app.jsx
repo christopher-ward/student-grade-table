@@ -25,13 +25,25 @@ class App extends React.Component {
       });
   }
 
+  getAverageGrade() {
+    if (this.state.grades.length === 0) {
+      return 'N/A';
+    }
+    let sumOfGrades = null;
+    let numberOfStudents = null;
+    this.state.grades.forEach(obj => {
+      sumOfGrades += obj.grade;
+      numberOfStudents++;
+    });
+    return Math.ceil(sumOfGrades / numberOfStudents);
+  }
+
   render() {
+    const averageGrade = this.getAverageGrade();
     return (
       <div className="container">
-        <div className="row">
-          <Header />
-          <GradeTable grades={this.state.grades} />
-        </div>
+        <Header averageGrade={averageGrade}/>
+        <GradeTable grades={this.state.grades} />
       </div>
     );
   }

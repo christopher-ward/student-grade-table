@@ -1,7 +1,13 @@
 import React from 'react';
 
 function Header(props) {
-  return <h1>Student Grade Table</h1>;
+  const average = props.averageGrade;
+  return (
+    <div className="row justify-content-between align-items-center">
+      <h1>Student Grade Table</h1>
+      <h2>Average Grade: <span className="badge badge-secondary">{average}</span></h2>
+    </div>
+  );
 }
 
 export default Header;
