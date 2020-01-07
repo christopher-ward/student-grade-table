@@ -21,7 +21,37 @@ class App extends React.Component {
         });
       })
       .catch(err => {
-        console.error('caught at App.getAllTodos', err);
+        console.error('caught at App.componentDidMount', err);
+      });
+  }
+
+  appendGradeToServer() {
+    const bodyContent = {
+      name: 'Joan',
+      course: 'Math',
+      grade: 95
+    };
+    const fetchURL = '/api/grades';
+    const initObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bodyContent)
+    };
+    const fetchRequest = new Request(fetchURL, initObj);
+    fetch(fetchRequest)
+      .then(response => {
+        return response.json();
+      })
+      .then(response => {
+        const newGrades = this.state.grades.concat(response);
+        this.setState({
+          grades: newGrades
+        });
+      })
+      .catch(err => {
+        console.error('Caught in App.appendGradeToServer:', err);
       });
   }
 
