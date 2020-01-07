@@ -31,7 +31,7 @@ class App extends React.Component {
     }
     let sumOfGrades = null;
     let numberOfStudents = null;
-    this.state.grades.map(obj => {
+    this.state.grades.forEach(obj => {
       sumOfGrades += obj.grade;
       numberOfStudents++;
     });
