@@ -27,7 +27,7 @@ class App extends React.Component {
 
   getAverageGrade() {
     if (this.state.grades.length === 0) {
-      return 0;
+      return 'N/A';
     }
     let sumOfGrades = null;
     let numberOfStudents = null;
