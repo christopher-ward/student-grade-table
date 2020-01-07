@@ -35,16 +35,15 @@ class App extends React.Component {
       sumOfGrades += obj.grade;
       numberOfStudents++;
     });
-    return sumOfGrades / numberOfStudents;
+    return Math.ceil(sumOfGrades / numberOfStudents);
   }
 
   render() {
+    const averageGrade = this.getAverageGrade();
     return (
       <div className="container">
-        <div className="row">
-          <Header />
-          <GradeTable grades={this.state.grades} />
-        </div>
+        <Header averageGrade={averageGrade}/>
+        <GradeTable grades={this.state.grades} />
       </div>
     );
   }
