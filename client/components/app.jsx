@@ -25,6 +25,19 @@ class App extends React.Component {
       });
   }
 
+  getAverageGrade() {
+    if (this.state.grades.length === 0) {
+      return 0;
+    }
+    let sumOfGrades = null;
+    let numberOfStudents = null;
+    this.state.grades.map(obj => {
+      sumOfGrades += obj.grade;
+      numberOfStudents++;
+    });
+    return sumOfGrades / numberOfStudents;
+  }
+
   render() {
     return (
       <div className="container">
