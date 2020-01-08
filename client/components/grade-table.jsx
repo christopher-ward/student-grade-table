@@ -17,20 +17,18 @@ class GradeTable extends React.Component {
   render() {
     const tableEmptyOrNot = this.tableEmptyStatus();
     return (
-      <div className="row">
-        <table className="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Student Name</th>
-              <th scope="col">Course</th>
-              <th scope="col">Grade</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableEmptyOrNot}
-          </tbody>
-        </table>
-      </div>
+      <table className="col table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Course</th>
+            <th scope="col">Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableEmptyOrNot}
+        </tbody>
+      </table>
     );
   }
 }
