@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './header';
 import GradeTable from './grade-table';
+import GradeForm from './grade-form';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
   }
 
   componentDidMount() {
@@ -25,31 +27,30 @@ class App extends React.Component {
       });
   }
 
+  handleSubmitForm(newFormData) {
+    // console.log(newFormData);s
+  }
+
   appendGradeToServer() {
-    const bodyContent = {
-      name: 'Joan',
-      course: 'Math',
-      grade: 95
-    };
     const fetchURL = '/api/grades';
     const initObj = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(bodyContent)
+      body: JSON.stringify()
     };
     const fetchRequest = new Request(fetchURL, initObj);
     fetch(fetchRequest)
       .then(response => {
         return response.json();
       })
-      .then(response => {
-        const newGrades = this.state.grades.concat(response);
-        this.setState({
-          grades: newGrades
-        });
-      })
+      // .then(response => {
+      //   const newGrades = this.state.grades.concat(response);
+      //   this.setState({
+      //     grades: newGrades
+      //   });
+      // })
       .catch(err => {
         console.error('Caught in App.appendGradeToServer:', err);
       });
@@ -73,7 +74,10 @@ class App extends React.Component {
     return (
       <div className="container">
         <Header averageGrade={averageGrade}/>
-        <GradeTable grades={this.state.grades} />
+        <div className="row">
+          <GradeTable grades={this.state.grades} />
+          <GradeForm onSubmit={this.handleSubmitForm}/>
+        </div>
       </div>
     );
   }
