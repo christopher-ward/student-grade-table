@@ -52,6 +52,39 @@ class App extends React.Component {
       });
   }
 
+  removeGradeFromServer(idOfGrade) {
+    const fetchURL = `/api/grades/${idOfGrade}`;
+    const initObj = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    const fetchRequest = new Request(fetchURL, initObj);
+    fetch(fetchRequest)
+      .then(response => {
+        return response.json();
+      })
+      .then(response => {
+        const clonedGradesArray = [...this.state.grades];
+        // console.log(clonedGradesArray);
+        const indexOfObjToRemove = clonedGradesArray.findIndex(obj => obj.id === idOfGrade);
+        // console.log(indexOfObjToRemove);
+        if (indexOfObjToRemove !== -1) {
+          clonedGradesArray.splice(indexOfObjToRemove, 1);
+          // console.log(clonedGradesArray);
+          this.setState({
+            grades: clonedGradesArray
+          });
+        } else {
+          // console.log('sorry');
+        }
+      })
+      .catch(err => {
+        console.error('Caught in App.removeGradeFromServer', err);
+      });
+  }
+
   getAverageGrade() {
     if (this.state.grades.length === 0) {
       return 'N/A';
