@@ -55,18 +55,9 @@ class App extends React.Component {
 
   removeGradeFromServer(idOfGrade) {
     const fetchURL = `/api/grades/${idOfGrade}`;
-    const initObj = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    const fetchRequest = new Request(fetchURL, initObj);
+    const fetchRequest = new Request(fetchURL, { method: 'DELETE' });
     fetch(fetchRequest)
-      .then(response => {
-        return response.json();
-      })
-      .then(response => {
+      .then(() => {
         const clonedGradesArray = [...this.state.grades];
         const indexOfObjToRemove = clonedGradesArray.findIndex(obj => obj.id === idOfGrade);
         if (indexOfObjToRemove !== -1) {
