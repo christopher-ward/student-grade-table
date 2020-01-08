@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.appendGradeToServer = this.appendGradeToServer.bind(this);
+    this.removeGradeFromServer = this.removeGradeFromServer.bind(this);
   }
 
   componentDidMount() {
@@ -104,7 +105,7 @@ class App extends React.Component {
       <div className="container">
         <Header averageGrade={averageGrade}/>
         <div className="row">
-          <GradeTable grades={this.state.grades} />
+          <GradeTable grades={this.state.grades} delete={this.removeGradeFromServer}/>
           <GradeForm onSubmit={this.appendGradeToServer}/>
         </div>
       </div>
