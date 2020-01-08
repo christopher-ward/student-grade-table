@@ -42,8 +42,9 @@ class GradeForm extends React.Component {
 
   render() {
     return (
-      <form className="col-md-3 justify-content-between" onSubmit={this.handleSubmit} onReset={this.handleReset}>
+      <form className="col-md-3 justify-content-between mt-2" onSubmit={this.handleSubmit} onReset={this.handleReset}>
         <div className="form-group">
+          <h2 className='text-center mb-4'>Add Grade</h2>
           <label className="d-flex align-items-center">
             <div className='input-group-prepend'>
               <i className="fas fa-user input-group-text"></i>

@@ -10,19 +10,20 @@ class GradeTable extends React.Component {
 
   gradeRowPopulate() {
     return this.props.grades.map(obj =>
-      <Grade key={obj.id} name={obj.name} course={obj.course} grade={obj.grade} />
+      <Grade key={obj.id} id={obj.id} name={obj.name} course={obj.course} grade={obj.grade} delete={this.props.delete}/>
     );
   }
 
   render() {
     const tableEmptyOrNot = this.tableEmptyStatus();
     return (
-      <table className="col table table-bordered table-striped">
+      <table className="col table table-striped mt-2">
         <thead>
           <tr>
-            <th scope="col">Student Name</th>
-            <th scope="col">Course</th>
-            <th scope="col">Grade</th>
+            <th className="border-top-0" scope="col">Student Name</th>
+            <th className="border-top-0" scope="col">Course</th>
+            <th className="border-top-0" scope="col">Grade</th>
+            <th className="border-top-0 text-right" scope="col" >Operations</th>
           </tr>
         </thead>
         <tbody>

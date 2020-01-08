@@ -10,6 +10,7 @@ class App extends React.Component {
       grades: []
     };
     this.appendGradeToServer = this.appendGradeToServer.bind(this);
+    this.removeGradeFromServer = this.removeGradeFromServer.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,25 @@ class App extends React.Component {
       });
   }
 
+  removeGradeFromServer(idOfGrade) {
+    const fetchURL = `/api/grades/${idOfGrade}`;
+    const fetchRequest = new Request(fetchURL, { method: 'DELETE' });
+    fetch(fetchRequest)
+      .then(() => {
+        const clonedGradesArray = [...this.state.grades];
+        const indexOfObjToRemove = clonedGradesArray.findIndex(obj => obj.id === idOfGrade);
+        if (indexOfObjToRemove !== -1) {
+          clonedGradesArray.splice(indexOfObjToRemove, 1);
+          this.setState({
+            grades: clonedGradesArray
+          });
+        }
+      })
+      .catch(err => {
+        console.error('Caught in App.removeGradeFromServer', err);
+      });
+  }
+
   getAverageGrade() {
     if (this.state.grades.length === 0) {
       return 'N/A';
@@ -71,7 +91,7 @@ class App extends React.Component {
       <div className="container">
         <Header averageGrade={averageGrade}/>
         <div className="row">
-          <GradeTable grades={this.state.grades} />
+          <GradeTable grades={this.state.grades} delete={this.removeGradeFromServer}/>
           <GradeForm onSubmit={this.appendGradeToServer}/>
         </div>
       </div>

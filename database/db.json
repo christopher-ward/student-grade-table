@@ -25,28 +25,10 @@
       "id": 4
     },
     {
-      "name": "Mike Rowe",
-      "course": "Dirty Jobs",
-      "grade": 95,
-      "id": 5
-    },
-    {
       "name": "Preston Shipman",
       "course": "Shenanigans",
       "grade": 101,
       "id": 6
-    },
-    {
-      "name": "Laurence Fishburne",
-      "course": "Freeing Minds",
-      "grade": 101,
-      "id": 7
-    },
-    {
-      "name": "Tim Davis",
-      "course": "Web",
-      "grade": 9001,
-      "id": 8
     }
   ]
 }
