@@ -25,6 +25,11 @@ class GradeForm extends React.Component {
     event.preventDefault();
     const gradeInfo = this.state;
     this.props.onSubmit(gradeInfo);
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
   }
 
   handleCancel(event) {
