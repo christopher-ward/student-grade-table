@@ -68,17 +68,12 @@ class App extends React.Component {
       })
       .then(response => {
         const clonedGradesArray = [...this.state.grades];
-        // console.log(clonedGradesArray);
         const indexOfObjToRemove = clonedGradesArray.findIndex(obj => obj.id === idOfGrade);
-        // console.log(indexOfObjToRemove);
         if (indexOfObjToRemove !== -1) {
           clonedGradesArray.splice(indexOfObjToRemove, 1);
-          // console.log(clonedGradesArray);
           this.setState({
             grades: clonedGradesArray
           });
-        } else {
-          // console.log('sorry');
         }
       })
       .catch(err => {
