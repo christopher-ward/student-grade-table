@@ -10,7 +10,7 @@ class GradeForm extends React.Component {
     };
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleFormChange(event) {
@@ -32,8 +32,7 @@ class GradeForm extends React.Component {
     });
   }
 
-  handleCancel(event) {
-    event.preventDefault();
+  handleReset(event) {
     this.setState({
       name: '',
       course: '',
@@ -43,7 +42,7 @@ class GradeForm extends React.Component {
 
   render() {
     return (
-      <form className="col-md-3 justify-content-between" onSubmit={this.handleSubmit}>
+      <form className="col-md-3 justify-content-between" onSubmit={this.handleSubmit} onReset={this.handleReset}>
         <div className="form-group">
           <label className="d-flex align-items-center">
             <div className='input-group-prepend'>
@@ -69,8 +68,8 @@ class GradeForm extends React.Component {
           </label>
         </div>
         <>
-          <button className="btn btn-success" type='submit' onSubmit={this.handleSubmit}>Add</button>
-          <button className="btn btn-secondary ml-2" type='cancel' onClick={this.handleCancel}>Cancel</button>
+          <button className="btn btn-success" type='submit' >Add</button>
+          <button className="btn btn-secondary ml-2" type='reset' >Cancel</button>
         </>
       </form>
     );
