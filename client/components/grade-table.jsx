@@ -23,7 +23,7 @@ class GradeTable extends React.Component {
             <th className="border-top-0" scope="col">Student Name</th>
             <th className="border-top-0" scope="col">Course</th>
             <th className="border-top-0" scope="col">Grade</th>
-            <th className="border-top-0 text-right" scope="col" >Operations</th>
+            <th className="border-top-0 text-center" scope="col" >Operations</th>
           </tr>
         </thead>
         <tbody>
