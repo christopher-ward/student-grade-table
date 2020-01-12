@@ -7,10 +7,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: []
+      grades: [],
+      updateObjectTarget: {}
     };
     this.appendGradeToServer = this.appendGradeToServer.bind(this);
     this.removeGradeFromServer = this.removeGradeFromServer.bind(this);
+    this.receiveGradeInfoFromGrade = this.receiveGradeInfoFromGrade.bind(this);
+    this.updateGradeOnServer = this.updateGradeOnServer.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +27,7 @@ class App extends React.Component {
         });
       })
       .catch(err => {
-        console.error('caught at App.componentDidMount', err);
+        console.error('Caught at App.componentDidMount', err);
       });
   }
 
@@ -72,6 +75,18 @@ class App extends React.Component {
       });
   }
 
+  receiveGradeInfoFromGrade(targetObj) {
+    if (targetObj) {
+      this.setState({
+        updateObjectTarget: targetObj
+      });
+    }
+  }
+
+  updateGradeOnServer(upgradeObj) {
+
+  }
+
   getAverageGrade() {
     if (this.state.grades.length === 0) {
       return 'N/A';
@@ -87,12 +102,13 @@ class App extends React.Component {
 
   render() {
     const averageGrade = this.getAverageGrade();
+    const updateObjectTarget = this.state.updateObjectTarget;
     return (
       <div className="container">
         <Header averageGrade={averageGrade}/>
         <div className="row">
-          <GradeTable grades={this.state.grades} delete={this.removeGradeFromServer}/>
-          <GradeForm onSubmit={this.appendGradeToServer}/>
+          <GradeTable grades={this.state.grades} delete={this.removeGradeFromServer} getGradeInfo={this.receiveGradeInfoFromGrade}/>
+          <GradeForm onSubmit={this.appendGradeToServer} updateObjectTarget={updateObjectTarget} update={this.updateGradeOnServer}/>
         </div>
       </div>
     );

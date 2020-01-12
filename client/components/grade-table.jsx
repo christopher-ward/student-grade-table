@@ -10,7 +10,14 @@ class GradeTable extends React.Component {
 
   gradeRowPopulate() {
     return this.props.grades.map(obj =>
-      <Grade key={obj.id} id={obj.id} name={obj.name} course={obj.course} grade={obj.grade} delete={this.props.delete}/>
+      <Grade
+        key={obj.id}
+        id={obj.id}
+        name={obj.name}
+        course={obj.course}
+        grade={obj.grade}
+        delete={this.props.delete}
+        getGradeInfo={this.props.getGradeInfo}/>
     );
   }
 
