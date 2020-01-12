@@ -83,8 +83,32 @@ class App extends React.Component {
     }
   }
 
-  updateGradeOnServer(upgradeObj) {
-
+  updateGradeOnServer(updateObj) {
+    const idFromObj = updateObj.id;
+    const fetchURL = `/api/grades/${idFromObj}`;
+    const initObj = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updateObj)
+    };
+    const fetchRequest = new Request(fetchURL, initObj);
+    fetch(fetchRequest)
+      .then(response => {
+        return response.json();
+      })
+      .then(response => {
+        const currIndex = this.state.grades.findIndex(elem => elem.id === response.id);
+        const newState = this.state.grades;
+        newState[currIndex] = response;
+        this.setState({
+          grades: newState
+        });
+      })
+      .catch(err => {
+        console.error('Caught in App.updateGradeOnServer', err);
+      });
   }
 
   getAverageGrade() {

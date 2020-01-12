@@ -5,7 +5,8 @@ function Grade(props) {
     name: props.name,
     course: props.course,
     grade: props.grade,
-    id: props.id
+    id: props.id,
+    updating: true
   };
   return (
     <tr>

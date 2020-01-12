@@ -20,7 +20,8 @@ class GradeForm extends React.Component {
       this.setState({
         name: updateObj.name,
         course: updateObj.course,
-        grade: updateObj.grade
+        grade: updateObj.grade,
+        updating: updateObj.updating
       });
     }
   }
@@ -35,23 +36,33 @@ class GradeForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const gradeInfo = this.state;
     if (this.state.updating) {
-      this.props.update();
+      const updateInfo = {
+        name: this.state.name,
+        course: this.state.course,
+        grade: this.state.grade,
+        id: this.state.id
+      };
+      updateInfo.id = this.props.updateObjectTarget.id;
+      this.props.update(updateInfo);
+      this.handleReset();
+      return;
     }
+    const gradeInfo = {
+      name: this.state.name,
+      course: this.state.course,
+      grade: this.state.grade
+    };
     this.props.onSubmit(gradeInfo);
-    this.setState({
-      name: '',
-      course: '',
-      grade: ''
-    });
+    this.handleReset();
   }
 
-  handleReset(event) {
+  handleReset() {
     this.setState({
       name: '',
       course: '',
-      grade: ''
+      grade: '',
+      updating: false
     });
   }
 
