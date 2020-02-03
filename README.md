@@ -11,22 +11,29 @@ A full stack page app that uses React and Node.js to allows teachers to add and 
 - Average grade is displayed
 - New grades can be added to the table
 - Grades can be deleted from the table
-## Preview
+## App Preview
 
 ## Development
 
 ### System Requirements
+- Node v10 or higher
+- NPM v6 or higher
+- PostgreSQL v10 or higher
 
 ### Getting Started
+1. Clone the repository in your command line interface.
+    ```bash
+    git clone https://github.com/christopher-ward/student-grade-table.git
+    ```
 1. Install all dependencies in `package.json` with NPM.
     ```bash
     npm install
     ```
-2. Build Project
+1. Build Project.
     ```bash
     npm run dev
     ```
-3. Open in localhost in browser
+1. Open in localhost in browser.
     ```
     http://localhost:3000/
     ```
