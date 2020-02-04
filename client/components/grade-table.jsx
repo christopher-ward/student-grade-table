@@ -4,7 +4,7 @@ import Grade from './grade';
 class GradeTable extends React.Component {
 
   tableEmptyStatus() {
-    if (this.props.grades.length === 0) return <tr><td colSpan="3" className="no-students">No grades recorded...</td></tr>;
+    if (this.props.grades.length === 0) return <tr><td colSpan="4" className="no-students">No grades recorded...</td></tr>;
     return this.gradeRowPopulate();
   }
 
