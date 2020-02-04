@@ -15,10 +15,10 @@ A full stack page app that uses React and Node.js to allows teachers to add and 
 ## Live Demo
 
 ## Features
-- Recorded grades can be view in a list.
-- Average grade is displayed
-- New grades can be added to the table
-- Grades can be deleted from the table
+- User can view a list of recorded grades
+- Average grade is displayed and updated as new grades are added
+- User can can added new grades to the table
+- User can delete grades from the table
 ## App Preview
 
 ## Development
