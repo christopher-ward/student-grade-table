@@ -3,6 +3,14 @@
 
 A full stack page app that uses React and Node.js to allows teachers to add and manage student grade information.
 ## Technologies Used
+- React
+- Webpack 4
+- Bootstrap 4
+- Node.js
+- PostrgreSQL
+- HTML5
+- CSS3
+- AWS EC2
 
 ## Live Demo
 
