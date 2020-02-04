@@ -20,6 +20,7 @@ A full stack page app that uses React and Node.js to allows teachers to add and 
 - User can can added new grades to the table
 - User can delete grades from the table
 ## App Preview
+![Student Grade Table](sgt-features.gif)
 
 ## Development
 
